@@ -2,8 +2,8 @@
   <div class="table">
     <thead class="table__header">
       <tr class="table__header-row">
-        <th class="table__header-item"><h3>Имя</h3></th>
-        <th class="table__header-item"><h3>Телефон</h3></th>
+        <th class="table__header-item" @click="sortByName"><h3>Имя</h3></th>
+        <th class="table__header-item" @click="sortByPhone"><h3>Телефон</h3></th>
       </tr>
     </thead>
     <tbody class="table__body">
@@ -22,6 +22,14 @@ export default {
   },
   components: {
     TableRow
+  },
+  methods: {
+    sortByName() {
+      this.usersData.sort((a, b) => a.name.localeCompare(b.name))
+    },
+    sortByPhone() {
+      this.usersData.sort((a, b) => a.phone.localeCompare(b.phone))
+    }
   }
 }
 </script>

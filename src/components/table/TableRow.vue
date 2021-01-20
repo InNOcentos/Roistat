@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style>
-.table__body > .table__body-container:last-child {
+.table__body > .table__body-container {
   box-shadow: 0 -1px 0 0 black;
 }
 .table__body-row--main {
