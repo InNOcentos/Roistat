@@ -53,7 +53,7 @@ export default {
 <style>
 .addModal {
   position: absolute;
-  right: -210%;
+  right: -175%;
   top: 64px;
   width: 95%;
   height: 360px;
