@@ -38,7 +38,7 @@ export default {
             subordinates: [
               {
                 id: 5,
-                name: 'Иван',
+                name: 'Василий',
                 phone_number: '+7 941 123 21 42',
                 subordinates: []
               }
@@ -65,19 +65,16 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 body {
-  margin: 70px 100px;
+  margin: 35px 100px;
 }
 h3 {
   font-weight: normal;
   margin: 0;
   font-size: inherit;
 }
-
 th,
 td {
   border: 1px solid;

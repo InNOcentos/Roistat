@@ -1,6 +1,6 @@
 <template>
   <div class="table__body-container">
-    <tr class="table__body-row--main">
+    <tr class="table__body-row table__body-row--main">
       <td
         class="table__body-item table__body-item--name"
         @click="toggleChildren()"
@@ -11,7 +11,7 @@
       </td>
       <td class="table__body-item table__body-item--phone">{{ rowData.phone_number }}</td>
     </tr>
-    <tr class="table__body-row--subordinates" v-if="showChildren">
+    <tr class="table__body-row table__body-row--subordinates" v-if="showChildren">
       <TableRow
         v-for="(subordinate, index) in rowData.subordinates"
         :rowData="subordinate"
@@ -51,9 +51,12 @@ export default {
 </script>
 
 <style>
-.table__body > .table__body-container {
+td {
   box-shadow: 0 -1px 0 0 black;
 }
+/* .table__body > .table__body-container {
+  box-shadow: 0 -1px 0 0 black;
+} */
 .table__body-row--main {
   justify-content: space-between;
   width: 100%;
@@ -76,6 +79,7 @@ export default {
 }
 .table__body-row--subordinates {
   display: flex;
+  flex-direction: column;
 }
 .table__body-row--subordinates > .table__body-container {
   justify-content: space-between;
