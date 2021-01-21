@@ -4,7 +4,7 @@
       <h3>Добавление пользователя</h3>
       <span class="addModal__heading--close" @click="tableModalCloseBtnClick">x</span>
     </div>
-    <form class="addModal__form" ref="addModal__form" @submit.prevent="getFormValues">
+    <form class="addModal__form" ref="addModal__form" @submit.prevent="sendFormValues">
       <div class="addModal__form-item">
         <label for="name">Имя</label>
         <input type="text" name="name" />
@@ -37,7 +37,7 @@ export default {
     tableModalCloseBtnClick() {
       this.$emit('tableModalCloseBtnClick')
     },
-    getFormValues(e) {
+    sendFormValues(e) {
       this.$emit('tableModalSaveBtnClick', {
         name: e.target.elements.name.value,
         phone_number: e.target.elements.phone.value,

@@ -9,7 +9,7 @@
         </tr>
       </thead>
       <tbody class="table__body">
-        <TableRow v-for="(row, index) in usersData" :key="index" :rowData="row" :depth="0" />
+        <TableRow v-for="(row, index) in getUsersData" :key="index" :rowData="row" :depth="0" />
       </tbody>
     </div>
     <UserModal
@@ -43,24 +43,35 @@ export default {
   computed: {
     getParsedUsersData() {
       this.parsedUsersData.length = 0
-      return this.parseArrayData(this.usersData)
+      return this.parseArrayData(this.getUsersData)
     },
     getParsedUsersDataLength() {
       return this.parsedUsersData.length
+    },
+    getUsersData() {
+      return JSON.parse(localStorage.getItem('usersData')) || this.usersData
+    }
+  },
+  watch: {
+    usersData(newUsersData, oldUsersData) {
+      localStorage.setItem('usersData', JSON.stringify(this.usersData))
     }
   },
   methods: {
     sortByName() {
-      this.usersData.sort((a, b) => a.name.localeCompare(b.name))
+      this.getUsersData.sort((a, b) => a.name.localeCompare(b.name))
     },
     sortByPhone() {
-      this.usersData.sort((a, b) => a.phone.localeCompare(b.phone))
+      this.getUsersData.sort((a, b) => a.phone.localeCompare(b.phone))
     },
     showTableModal() {
       this.tableModalIsVisible = true
     },
     closeTableModal() {
       this.tableModalIsVisible = false
+    },
+    saveDataToLocalStorage() {
+      localStorage.setItem('usersData', JSON.stringify(this.getUsersData))
     },
     parseArrayData(array) {
       return array.map((e) => {
@@ -78,7 +89,7 @@ export default {
         subordinates: []
       }
 
-      this.usersData.forEach((e, index) => {
+      this.getUsersData.forEach((e, index) => {
         if (e.id === +value.chiefId) {
           e.subordinates.push(newTableModalData)
         }
@@ -89,6 +100,7 @@ export default {
           e = e.subordinates[0]
         }
       })
+      this.saveDataToLocalStorage()
     }
   }
 }
